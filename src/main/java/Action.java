@@ -5,19 +5,24 @@ import java.util.HashMap;
 
 public abstract class  Action implements Greet {
     private boolean showMenu = true;
-    String name;
-    String[] commandArray;
-    String userInput;
+    public String name;
+    public Language lang;
+    private String[] commandArray;
+    private String userInput;
     int userCount;
     HashMap<String, Integer> userMap = new HashMap<String, Integer>();
 
 
 
     public boolean commandInit(String userInput) {
+        //get command and parameters, seperate greeting logic from commands/menu
         this.userInput = userInput;
         this.commandArray = userInput.split(" ");
         if(commandArray.length > 1){
             this.name = commandArray[1];
+            if(commandArray.length > 2){
+                this.lang = Language.valueOf(commandArray[2].toUpperCase());
+            }
         }
         getCommand();
         return showMenu;
@@ -28,9 +33,9 @@ public abstract class  Action implements Greet {
         switch (this.commandArray[0]){
             case("greet"):
                 if(this.commandArray.length == 2){
-                    System.out.println(greet(commandArray[1], Language.ENGLISH));
+                    System.out.println(greet());
                 }else {
-                    System.out.println(greet(commandArray[1], Language.valueOf(commandArray[2].toUpperCase())));
+                    System.out.println(greet());
                 }
                 break;
             case ("counter"):

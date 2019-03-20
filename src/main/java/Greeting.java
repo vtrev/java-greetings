@@ -3,14 +3,14 @@ import greet.Language;
 public class Greeting extends Action {
 
     @Override
-    public String greet(String name,Language lang) {
-    //default greeting
+    public String greet() {
+        updateCount(this.name);
+
+        //default greeting
         if(lang != Language.ENGLISH ){
-            updateCount(name);
             return lang.getGreeting() +" "+this.name + "!";
         }
-        updateCount(name);
-        return Language.ENGLISH.getGreeting()+" "+name;
+        return Language.ENGLISH.getGreeting()+" "+name+"!";
     }
 
     @Override

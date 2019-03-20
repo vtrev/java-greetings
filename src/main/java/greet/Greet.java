@@ -1,7 +1,7 @@
 package greet;
 
 public interface Greet {
-    String greet(String name,Language lang);
+    String greet();
     String greeted();
     int counter();
     void clear();
