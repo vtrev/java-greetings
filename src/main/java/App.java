@@ -1,19 +1,24 @@
-import sun.jvm.hotspot.CommandProcessor;
+import greet.Greeter;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args){
         boolean menu = true;
-        // Greeter greeting = new Greeter();
-        // Scanner scanner = new Scanner(System.in);
 
-        CommandProcessor commandProcessor = new CommandProcessor(greeter, counter);
+         Scanner scanner = new Scanner(System.in);
+        Greeter greeter = new Greeter();
+        CommandProcessor cpu = new CommandProcessor(greeter);
+
+
 
         while (menu){
             System.out.println("Enter a command : ");
-            // Processor processor = new Processor(scanner.nextLine());
-            Result result = commandProcessor.processCommand(scanner.nextLine());
+            cpu.proccessInput(scanner.nextLine());
 
-            ResultPresenter.display(result);
+            // CommandProcessor processor = new CommandProcessor(scanner.nextLine());
+           // Result result = CommandProcessor.processCommand(scanner.nextLine());
+
+            //ResultPresenter.display(result);
 
             // Action action = new Action(processor.getCommand(), processor.getName(), processor.getOption());
             // System.out.println(action.processCommand());
