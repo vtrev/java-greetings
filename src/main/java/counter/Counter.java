@@ -1,3 +1,5 @@
+package counter;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -6,11 +8,11 @@ public class Counter {
     private Map<String,Integer> greetMap = new HashMap<>();
 
 
-    public void addUser(String userName){
+     public  void addUser(String userName){
         updateCount(userName);
     }
 
-    public int getCount(){
+     public int getCount(){
         return this.greetMap.size();
     }
 
@@ -25,24 +27,21 @@ public class Counter {
         return 0;
     }
 
-    public void clear(){
-        clear(null);
+    public String clear(){
+       return clearUsers(null);
     }
 
-    public void clear(String name){
-        clearUsers(name);
+    public String clear(String name){
+       return clearUsers(name);
     }
 
-    public boolean userExists(String userName){
-        return greetMap.containsKey(userName);
-    }
-
-    private void clearUsers(String name){
+    private String clearUsers(String name){
         if(greetMap.containsKey(name)){
             greetMap.remove(name);
-            return;
+            return "User "+name+" has been removed successfully";
         }
         greetMap.clear();
+        return "All users have been cleared successfully";
     }
 
     private void updateCount(String name) {
