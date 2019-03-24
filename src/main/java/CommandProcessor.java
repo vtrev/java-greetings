@@ -36,7 +36,7 @@
                     System.out.println("Help");
                     break;
                 case ("exit"):
-                    return displayResult ("Goodbye!",false);
+                    return displayResult (" Thanks for using the app.Goodbye!",false);
                 default:
                     displayResult("Error! Invalid command, please try again or type help for a valid  command list.",true);
                     break;
