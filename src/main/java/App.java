@@ -1,6 +1,3 @@
-import command.CommandProcessor;
-import counter.Counter;
-import greet.Greeter;
 import java.util.Scanner;
 
 public class App {

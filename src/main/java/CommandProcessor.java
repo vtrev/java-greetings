@@ -1,24 +1,23 @@
-package command;
-import counter.Counter;
-import greet.Greeter;
-import greet.Language;
 
-public class CommandProcessor {
+ class CommandProcessor {
     private String[] inputArray;
     private Greeter greeter;
     private Counter counter;
 
 
-    public CommandProcessor(Greeter greeter, Counter counter) {
+     CommandProcessor(Greeter greeter, Counter counter) {
         this.greeter = greeter;
         this.counter = counter;
     }
 
-    public boolean processInput(String userInput){
+     boolean processInput(String userInput){
         generateCommandArray(userInput);
             switch (this.inputArray[0]){
                 case("greet"):
-                    displayResult( greeter.greet(getArg1(inputArray),  getLangValue(getArg2(inputArray))),true);
+                    if(inputArray.length ==1){
+                       return displayResult("Please add your name after the greet command.",true);
+                    }
+                    displayResult( greeter.greet(getArg1(inputArray),  getLang(getArg2(inputArray))),true);
                     counter.addUser(getArg1(inputArray));
                     break;
                 case ("greeted" ):
@@ -44,19 +43,18 @@ public class CommandProcessor {
             }
         return true;
     }
-    
+
     private  void generateCommandArray(String commandString){
         this.inputArray = commandString.split(" ");
     }
 
-    private String getLangValue(String langString){
+    private Language getLang(String langString){
         try {
-            return Language.valueOf(langString.toUpperCase()).toString();
-        }catch (IllegalArgumentException e ){
-           return Language.ENGLISH.name();
+            return Language.valueOf(langString.toUpperCase());
         }
         catch (NullPointerException e){
-            return Language.ENGLISH.name();
+            //return default language
+            return Language.ENGLISH;
         }
     }
 

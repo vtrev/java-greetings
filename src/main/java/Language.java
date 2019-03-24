@@ -1,5 +1,3 @@
-package greet;
-
 public enum Language {
     ENGLISH("Hello"),TSONGA("Avuxeni"),AFRIKAANS("Hallo");
     private String greeting;
