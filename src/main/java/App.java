@@ -7,7 +7,9 @@ public class App {
 
          Scanner scanner = new Scanner(System.in);
         Greeter greeter = new Greeter();
-        CommandProcessor cpu = new CommandProcessor(greeter);
+        Counter counter = new Counter();
+
+        CommandProcessor cpu = new CommandProcessor(greeter,counter);
 
 
 

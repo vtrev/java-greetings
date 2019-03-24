@@ -4,30 +4,33 @@ import greet.Language;
 public class CommandProcessor {
     private String[] inputArray;
     private Greeter greeter;
-    //private Counter counter;
+    private Counter counter;
 
 
-    public CommandProcessor(Greeter greeter) {
+    public CommandProcessor(Greeter greeter,Counter counter) {
         this.greeter = greeter;
-       // this.counter = counter;
+       this.counter = counter;
     }
 
-
     public void proccessInput(String userInput){
-        this.inputArray = userInput.split(" ");
+        generateCommandArray(userInput);
         if(validateCommand(this.inputArray[0])){
             switch (this.inputArray[0]){
                 case("greet"):
-                    //System.out.println(getArg1(inputArray));
-                     System.out.println(greeter.greet(getArg1(inputArray),  getLangValue(getArg2(inputArray))));
-                   case ("counter"):
-                    //return "Now counting";
-                //goto the counter
-                //System.out.println(counter()+" Users have been greeted on this app.");
-//                System.out.println("Count");
+                     diplayResult( greeter.greet(getArg1(inputArray),  getLangValue(getArg2(inputArray))));
+                     counter.addUser(getArg1(inputArray));
+                     break;
+                   case ("greeted" ):
+                       if(inputArray.length > 1){
+                    diplayResult("User "+getArg1(inputArray) + " has been greeted "+ counter.getCount(getArg1(inputArray)) +" times.");
+                       return;
+                       }
+                       diplayResult("Total number of users greeted : "+counter.getCount());
+                    break;
                 case("clear"):
                     //go to clear code
                     System.out.println("clear");
+                    break;
                 case("help"):
                     //show help
                     System.out.println("Help");
@@ -39,13 +42,10 @@ public class CommandProcessor {
 //                System.out.println("Exit app");
                 //quit the app
                 default:
-                    System.out.println("Error : Invalid command.");
+                    System.out.println();
             }
-
-
-
-
-
+        }else {
+            diplayResult("Error! Invalid command.");
         }
     }
 
@@ -56,6 +56,10 @@ public class CommandProcessor {
             }
         }
             return false;
+    }
+
+    private  void generateCommandArray(String commandString){
+        this.inputArray = commandString.split(" ");
     }
 
     private String getLangValue(String langString){
@@ -70,11 +74,10 @@ public class CommandProcessor {
     }
 
     private String getArg1(String[] arrayIn){
-        System.out.println(arrayIn.length);
+
         if(arrayIn.length >= 2){
         return  arrayIn[1];
         }
-        System.out.println("Returning null");
         return null;
     }
 
@@ -85,4 +88,9 @@ public class CommandProcessor {
 
         return null;
     }
+
+    private void diplayResult(String result){
+        System.out.println(result);
+    }
+
 }
