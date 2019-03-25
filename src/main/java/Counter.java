@@ -7,7 +7,6 @@ import java.util.HashMap;
       void addUser(String userName){
         updateCount(userName);
     }
-
      int getCount(){
         return this.greetMap.size();
     }
