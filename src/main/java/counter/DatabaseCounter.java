@@ -15,7 +15,7 @@ public class DatabaseCounter {
         final String jdbcURL = "jdbc:h2:file:./database/greetings";
         try {
             Connection conn = DriverManager.getConnection(jdbcURL, "sa", "");
-            PreparedStatement ps = conn.prepareStatement("select * from user");
+            PreparedStatement ps = conn.prepareStatement("select * from USERS");
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()) {

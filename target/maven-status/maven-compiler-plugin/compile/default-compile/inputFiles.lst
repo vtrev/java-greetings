@@ -1,5 +1,8 @@
-/home/vusi/projects/java/greet-in-java/src/main/java/CommandProcessor.java
-/home/vusi/projects/java/greet-in-java/src/main/java/Counter.java
+/home/vusi/projects/java/greet-in-java/src/main/java/InputProcessor.java
+/home/vusi/projects/java/greet-in-java/src/main/java/counter/DatabaseCounter.java
+/home/vusi/projects/java/greet-in-java/src/main/java/counter/MemoryCounter.java
+/home/vusi/projects/java/greet-in-java/src/main/java/command/Commands.java
 /home/vusi/projects/java/greet-in-java/src/main/java/Greeter.java
 /home/vusi/projects/java/greet-in-java/src/main/java/App.java
 /home/vusi/projects/java/greet-in-java/src/main/java/Language.java
+/home/vusi/projects/java/greet-in-java/src/main/java/command/CommandProcessor.java
