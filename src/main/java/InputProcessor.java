@@ -14,7 +14,7 @@
          cp.processCommand(userInput);
          switch (cp.getCommand()) {
              case ("greet"):
-                 if (cp.getName().equals(null)) {
+                 if (cp.getName() == null) {
                      return displayResult("Please add your name after the greet command.", true);
                  }
                  displayResult(greeter.greet(cp.getName(),cp.getLangauge()), true);
