@@ -7,19 +7,19 @@ class GreeterTest {
     @Test
     void shouldGreetUserInEnglish() {
     Greeter greeter = new Greeter();
-    assertEquals(greeter.greet("Vusi",Language.ENGLISH),"Hello Vusi !");
+    assertEquals(greeter.greet("Vusi","English"),"Hello Vusi!");
 
     }
     @Test
     void shouldGreetUserInxiTsonga() {
         Greeter greeter = new Greeter();
-        assertEquals(greeter.greet("Vusi",Language.TSONGA),"Avuxeni Vusi !");
+        assertEquals(greeter.greet("Vusi","Tsonga"),"Avuxeni Vusi!");
 
     }
     @Test
     void shouldGreetUserInAfrikaans() {
         Greeter greeter = new Greeter();
-        assertEquals(greeter.greet("Vusi",Language.AFRIKAANS),"Hallo Vusi !");
+        assertEquals(greeter.greet("Vusi","Afrikaans"),"Hallo Vusi!");
 
     }
 }

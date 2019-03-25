@@ -6,7 +6,11 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         Greeter greeter = new Greeter();
         Counter counter = new Counter();
-        CommandProcessor cpu = new CommandProcessor(greeter,counter);
+        CommandProcessor commandProcessor = new CommandProcessor();
+        // Counter counter = new CounterUsingJdbc();
+        InputProcessor cpu = new InputProcessor(greeter, counter,commandProcessor);
+
+
         System.out.println("Hello World! Welcome to the greeting app! :)");
         while(showMenu){
             System.out.println("Enter a command : ");
