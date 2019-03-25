@@ -1,3 +1,5 @@
+package command;
+
 public class CommandProcessor {
 
     private String[] inputArray;
@@ -15,7 +17,7 @@ public class CommandProcessor {
     }
 
     private boolean validateCommand(String commandIn){
-        for(Commands command:Commands.values()){
+        for(Commands command: Commands.values()){
             if(command.name().equals(commandIn.toUpperCase())){
                 return true;
             }

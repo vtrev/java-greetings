@@ -1,3 +1,6 @@
+import command.CommandProcessor;
+import counter.MemoryCounter;
+
 import java.util.Scanner;
 
 public class App {
@@ -5,10 +8,10 @@ public class App {
         boolean showMenu = true;
         Scanner scanner = new Scanner(System.in);
         Greeter greeter = new Greeter();
-        Counter counter = new Counter();
+        MemoryCounter memoryCounter = new MemoryCounter();
         CommandProcessor commandProcessor = new CommandProcessor();
-        // Counter counter = new CounterUsingJdbc();
-        InputProcessor cpu = new InputProcessor(greeter, counter,commandProcessor);
+        // counter.Counter counter = new CounterUsingJdbc();
+        InputProcessor cpu = new InputProcessor(greeter, memoryCounter,commandProcessor);
 
 
         System.out.println("Hello World! Welcome to the greeting app! :)");

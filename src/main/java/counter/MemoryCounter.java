@@ -1,20 +1,22 @@
+package counter;
+
 import java.util.Map;
 import java.util.HashMap;
 
-class Counter {
+public class MemoryCounter {
 
     private Map<String, Integer> greetMap = new HashMap<>();
 
-    void addUser(String userName) {
+    public void addUser(String userName) {
         updateCount(userName);
 
     }
 
-    int getCount() {
+    public int getCount() {
         return this.greetMap.size();
     }
 
-    int getCount(String userName) {
+    public int getCount(String userName) {
         try {
             return greetMap.get(userName);
         } catch (NullPointerException e) {
@@ -23,12 +25,12 @@ class Counter {
         return 0;
     }
 
-    String clear() {
+    public String clear() {
         greetMap.clear();
         return "All users have been cleared successfully";
     }
 
-    String clear(String userName) {
+    public String clear(String userName) {
         return clearUsers(userName);
     }
 

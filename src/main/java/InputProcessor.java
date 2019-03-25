@@ -1,10 +1,12 @@
+import command.CommandProcessor;
+import counter.MemoryCounter;
 
- class InputProcessor {
+class InputProcessor {
      private Greeter greeter;
-     private Counter counter;
+     private MemoryCounter counter;
      private CommandProcessor cp;
 
-     InputProcessor(Greeter greeter, Counter counter, CommandProcessor commandProcessor) {
+     InputProcessor(Greeter greeter, MemoryCounter counter, CommandProcessor commandProcessor) {
          this.greeter = greeter;
          this.counter = counter;
          this.cp = commandProcessor;
