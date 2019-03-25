@@ -52,7 +52,7 @@
         try {
             return Language.valueOf(langString.toUpperCase());
         }
-        catch (NullPointerException e){
+        catch (NullPointerException | IllegalArgumentException e){
             //return default language
             return Language.ENGLISH;
         }
