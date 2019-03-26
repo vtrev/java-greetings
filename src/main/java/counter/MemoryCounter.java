@@ -3,13 +3,17 @@ package counter;
 import java.util.Map;
 import java.util.HashMap;
 
-public class MemoryCounter {
+public class MemoryCounter implements Counter{
 
     private Map<String, Integer> greetMap = new HashMap<>();
 
-    public void addUser(String userName) {
-        updateCount(userName);
+    public String addUser(String userName) {
+        if (greetMap.containsKey(userName)) {
+            return updateCount(userName);
+        }
 
+        greetMap.put(userName, 1);
+        return "Added " + userName + " to the memory successfully";
     }
 
     public int getCount() {
@@ -42,11 +46,8 @@ public class MemoryCounter {
         return "Error! User " + userName + " does not exist";
     }
 
-    private void updateCount(String userName) {
-        if (greetMap.containsKey(userName)) {
-            greetMap.put(userName, greetMap.get(userName) + 1);
-        } else {
-            greetMap.put(userName, 1);
-        }
+    private String updateCount(String userName) {
+        greetMap.put(userName, greetMap.get(userName) + 1);
+        return "User count for " + userName + " updated successfully";
     }
 }

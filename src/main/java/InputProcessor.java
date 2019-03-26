@@ -1,18 +1,20 @@
 import command.CommandProcessor;
-import counter.MemoryCounter;
+import counter.Counter;
+
+import java.sql.SQLException;
 
 class InputProcessor {
      private Greeter greeter;
-     private MemoryCounter counter;
+     private Counter counter;
      private CommandProcessor cp;
 
-     InputProcessor(Greeter greeter, MemoryCounter counter, CommandProcessor commandProcessor) {
+     InputProcessor(Greeter greeter, Counter counter, CommandProcessor commandProcessor) {
          this.greeter = greeter;
          this.counter = counter;
          this.cp = commandProcessor;
      }
 
-     boolean processInput(String userInput) {
+     boolean processInput(String userInput)throws SQLException {
          cp.processCommand(userInput);
          switch (cp.getCommand()) {
              case ("greet"):
