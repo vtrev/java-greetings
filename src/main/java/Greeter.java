@@ -1,8 +1,4 @@
-
-// todo - move greet logic into here
 public class Greeter{
-
-
      String greet(String userName, String languageString){
          Language language = getLang(languageString);
          switch (language){
@@ -12,16 +8,10 @@ public class Greeter{
                  return "Avuxeni "+userName+"!";
              case AFRIKAANS:
                  return "Hallo "+userName+"!";
+             default:
+                 return "Error!";
          }
-
-
-
-        return "";
     }
-
-
-
-
     private Language getLang(String langString){
         try {
             return Language.valueOf(langString.toUpperCase());
