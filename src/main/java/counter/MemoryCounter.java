@@ -7,20 +7,20 @@ public class MemoryCounter implements Counter{
 
     private Map<String, Integer> greetMap = new HashMap<>();
 
-    public String addUser(String userName) {
+    public boolean countUser(String userName) {
         if (greetMap.containsKey(userName)) {
             return updateCount(userName);
         }
 
         greetMap.put(userName, 1);
-        return "Added " + userName + " to the memory successfully";
+        return true;
     }
 
-    public int getCount() {
+    public int totalGreetCount() {
         return this.greetMap.size();
     }
 
-    public int getCount(String userName) {
+    public int userGreetCount(String userName) {
         try {
             return greetMap.get(userName);
         } catch (NullPointerException e) {
@@ -29,25 +29,25 @@ public class MemoryCounter implements Counter{
         return 0;
     }
 
-    public String clear() {
+    public boolean clearAllUserCounts() {
         greetMap.clear();
-        return "All users have been cleared successfully";
+        return true;
     }
 
-    public String clear(String userName) {
+    public boolean clearUserCount(String userName) {
         return clearUsers(userName);
     }
 
-    private String clearUsers(String userName) {
+    private boolean clearUsers(String userName) {
         if (greetMap.containsKey(userName)) {
             greetMap.remove(userName);
-            return "User " + userName + " has been removed successfully";
+            return true;
         }
-        return "Error! User " + userName + " does not exist";
+        return false;
     }
 
-    private String updateCount(String userName) {
+    private boolean updateCount(String userName) {
         greetMap.put(userName, greetMap.get(userName) + 1);
-        return "User count for " + userName + " updated successfully";
+        return true;
     }
 }

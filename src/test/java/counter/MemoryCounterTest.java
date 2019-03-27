@@ -10,12 +10,12 @@ class MemoryMemoryCounterTest {
     void shouldReturnCorrectTotalCount() {
         MemoryCounter counter = new MemoryCounter();
         //count before adding user
-        assertEquals(counter.getCount(),0);
-        counter.addUser("Vusi");
-        counter.addUser("Jimmy");
-        counter.addUser("Baloyi");
+        assertEquals(counter.totalGreetCount(),0);
+        counter.countUser("Vusi");
+        counter.countUser("Jimmy");
+        counter.countUser("Baloyi");
         //count after user is added
-        assertEquals(counter.getCount(),3);
+        assertEquals(counter.totalGreetCount(),3);
     }
 
     @Test
@@ -23,30 +23,30 @@ class MemoryMemoryCounterTest {
         MemoryCounter counter = new MemoryCounter();
         int i = 5;
         while(i>0){
-            counter.addUser("Vusi");
+            counter.countUser("Vusi");
             if(i>3){
-                counter.addUser("Rangi");
+                counter.countUser("Rangi");
             }
             i--;
         }
-        assertEquals(counter.getCount("Rangi"),2);
-        assertEquals(counter.getCount("Vusi"),5);
+        assertEquals(counter.userGreetCount("Rangi"),2);
+        assertEquals(counter.userGreetCount("Vusi"),5);
     }
 
     @Test
     void shouldClearAllUsers() {
     MemoryCounter counter = new MemoryCounter();
-    counter.addUser("Vusi");
-    counter.addUser("Urangani");
-    counter.clear();
-    assertEquals(counter.getCount(),0);
+    counter.countUser("Vusi");
+    counter.countUser("Urangani");
+    counter.clearAllUserCounts();
+    assertEquals(counter.totalGreetCount(),0);
     }
 
     @Test
     void shouldClearUserCount() {
         MemoryCounter counter = new MemoryCounter();
-        counter.addUser("Vusi");
-        counter.clear("Vusi");
-        assertEquals(counter.getCount("Vusi"),0);
+        counter.countUser("Vusi");
+        counter.clearUserCount("Vusi");
+        assertEquals(counter.userGreetCount("Vusi"),0);
     }
 }

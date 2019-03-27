@@ -2688,3 +2688,7 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/vusi/p
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
 	... 24 more
+2019-03-27 11:38:12 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-199]
+2019-03-27 11:57:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-199]
