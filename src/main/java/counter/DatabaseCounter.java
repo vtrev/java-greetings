@@ -38,8 +38,7 @@ public class DatabaseCounter implements Counter{
 
     public int getCount() throws SQLException {
         Statement statement = getDbConnection().createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS");
-        resultSet = statement.executeQuery("SELECT COUNT(*) FROM USERS");
+        ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM USERS");
         resultSet.next();
         int rowCount = resultSet.getInt(1);
         resultSet.close();
