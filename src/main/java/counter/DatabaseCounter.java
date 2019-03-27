@@ -4,6 +4,13 @@ import java.sql.*;
 
 
 public class DatabaseCounter implements Counter{
+    private final String GET_USER_SQL = "SELECT 1 FROM USERS WHERE NAME = ?";
+    private final String ADD_USER_SQL = "INSERT INTO USERS (NAME,GREET_COUNT) VALUES (?,?)";
+    private final String GET_USER_COUNT_SQL = "SELECT GREET_COUNT FROM USERS WHERE NAME = ?";
+    private final String REMOVE_ALL_USERS_SQL = "DELETE FROM USERS";
+    private final String UPDATE_COUNT_SQL = "UPDATE USERS SET GREET_COUNT = ? WHERE NAME = ?";
+
+
 
     public Connection getDbConnection() throws SQLException {
         final String URL = "jdbc:h2:file:./database/greetings";
@@ -14,8 +21,7 @@ public class DatabaseCounter implements Counter{
 
     public String addUser(String userName) throws SQLException {
         //check if name is in the database already
-        String getUserSql = "SELECT 1 FROM USERS WHERE NAME = ?";
-        PreparedStatement getUserStmt = getDbConnection().prepareStatement(getUserSql);
+        PreparedStatement getUserStmt = getDbConnection().prepareStatement(GET_USER_SQL);
         getUserStmt.setString(1, userName);
         ResultSet resultSet = getUserStmt.executeQuery();
         //if in the db call update counter
@@ -23,8 +29,7 @@ public class DatabaseCounter implements Counter{
             return updateCount(userName);
         }
         //if not in db add the user with greet count one and check for success
-        String addUserSql = "INSERT INTO USERS (NAME,GREET_COUNT) VALUES (?,?)";
-        PreparedStatement addUserStmt = getDbConnection().prepareStatement(addUserSql);
+        PreparedStatement addUserStmt = getDbConnection().prepareStatement(ADD_USER_SQL);
         addUserStmt.setString(1, userName);
         addUserStmt.setInt(2, 1);
         int success = addUserStmt.executeUpdate();
@@ -47,8 +52,7 @@ public class DatabaseCounter implements Counter{
     }
 
     public int getCount(String userName) throws SQLException {
-        String getUserCountSql = "SELECT GREET_COUNT FROM USERS WHERE NAME = ?";
-        PreparedStatement getUserCountStmt = getDbConnection().prepareStatement(getUserCountSql);
+        PreparedStatement getUserCountStmt = getDbConnection().prepareStatement(GET_USER_COUNT_SQL);
         getUserCountStmt.setString(1, userName);
         ResultSet resultSet = getUserCountStmt.executeQuery();
         int greetCount = 0;
@@ -57,12 +61,10 @@ public class DatabaseCounter implements Counter{
         }
         System.out.println("Error! User " + userName + " does not exist.");
         return greetCount;
-
     }
 
     public String clear() throws SQLException {
-        String removeUsersSql = "DELETE FROM USERS";
-        PreparedStatement addUserStmt = getDbConnection().prepareStatement(removeUsersSql);
+        PreparedStatement addUserStmt = getDbConnection().prepareStatement(REMOVE_ALL_USERS_SQL);
         int affectedRowCount = addUserStmt.executeUpdate();
         if (affectedRowCount > 0) {
             return "All users have been cleared successfully";
@@ -83,10 +85,8 @@ public class DatabaseCounter implements Counter{
 
     private String updateCount(String userName) throws SQLException {
         //prepare the update and select statements
-        String updateCountSql = "UPDATE USERS SET GREET_COUNT = ? WHERE NAME = ?";
-        PreparedStatement updateCountStmt = getDbConnection().prepareStatement(updateCountSql);
-        String userGreetCountSql = "SELECT GREET_COUNT FROM USERS WHERE NAME = ?";
-        PreparedStatement userGreetCountStmt = getDbConnection().prepareStatement(userGreetCountSql);
+        PreparedStatement updateCountStmt = getDbConnection().prepareStatement(UPDATE_COUNT_SQL);
+        PreparedStatement userGreetCountStmt = getDbConnection().prepareStatement(GET_USER_COUNT_SQL);
         userGreetCountStmt.setString(1, userName);
 
         //get the current greetCount
