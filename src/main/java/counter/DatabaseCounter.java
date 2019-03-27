@@ -12,7 +12,7 @@ public class DatabaseCounter implements Counter{
 
 
 
-    public Connection getDbConnection() throws SQLException {
+    private Connection getDbConnection() throws SQLException {
         final String URL = "jdbc:h2:file:./database/greetings";
         java.sql.Connection connection = DriverManager.getConnection(URL, "sa", "");
         return connection;
