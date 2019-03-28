@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class App {
+public class Main {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         Greeter greeter = new Greeter();
@@ -25,7 +25,7 @@ public class App {
             switch (cp.getCommand()) {
                 case ("greet"):
                     System.out.println(action.greet());
-                    return;
+                    break;
                 case ("greeted"):
                     System.out.println(action.count());
                     break;
