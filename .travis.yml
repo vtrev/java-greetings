@@ -1,14 +1,12 @@
+# language
 language: java
-install: true
 
+# version numbers
 jdk:
   - oraclejdk8
 
+# Use JDK 8u45. The above line just causes the use of a minor version of Java 8.
 addons:
   apt:
     packages:
       - oracle-java8-installer
-
-script:
-  - mvn install
-  - mvn flyway:migrate test -B
