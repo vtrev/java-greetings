@@ -1,10 +1,8 @@
 package counter;
-
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MemoryMemoryCounterTest {
+class MemoryCounterTest {
 
     @Test
     void shouldReturnCorrectTotalCount() {
@@ -35,11 +33,11 @@ class MemoryMemoryCounterTest {
 
     @Test
     void shouldClearAllUsers() {
-    MemoryCounter counter = new MemoryCounter();
-    counter.countUser("Vusi");
-    counter.countUser("Urangani");
-    counter.clearAllUserCounts();
-    assertEquals(counter.totalGreetCount(),0);
+        MemoryCounter counter = new MemoryCounter();
+        counter.countUser("Vusi");
+        counter.countUser("Urangani");
+        counter.clearAllUserCounts();
+        assertEquals(counter.totalGreetCount(),0);
     }
 
     @Test
