@@ -48,8 +48,8 @@
                     <includes>
                         <include>target/*.jar</include>
                     </includes>
-                    <source>10</source>
-                    <target>10</target>
+                    <source>7</source>
+                    <target>7</target>
                 </configuration>
             </plugin>
             <plugin>
