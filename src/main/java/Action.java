@@ -1,13 +1,12 @@
 import command.CommandProcessor;
 import counter.*;
-
 import java.sql.SQLException;
 
 public class Action {
 
-    Counter counter;
-    CommandProcessor commandProcessor;
-    Greeter greeter;
+    private Counter counter;
+    private CommandProcessor commandProcessor;
+    private Greeter greeter;
 
     public Action(CommandProcessor commandProcessor,Counter counter,Greeter greeter){
         this.commandProcessor = commandProcessor;
