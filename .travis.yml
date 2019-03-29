@@ -11,4 +11,5 @@ addons:
     packages:
       - oracle-java8-installer
 
-  script: mvn clean install
+script: mvn clean install
+install: mvn install
