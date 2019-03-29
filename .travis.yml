@@ -12,4 +12,4 @@ addons:
       - oracle-java8-installer
 
 script: mvn clean install
-install: mvn install
+install: true
