@@ -12,7 +12,7 @@ public class CommandProcessor {
         if (validateCommand(this.inputArray[0])) {
             return inputArray[0];
         }
-        return "Invalid net.greet.command";
+        return "Invalid command";
     }
 
     private boolean validateCommand(String commandIn) {

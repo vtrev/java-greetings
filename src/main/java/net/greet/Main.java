@@ -19,23 +19,22 @@ public class Main {
         CommandProcessor cp = new CommandProcessor();
         Action action = new Action(cp, databaseCounter, greeter);
         System.out.println("Hello World! Welcome to the greeting app! :)");
-
         menu:
         while (true) {
             System.out.println("Enter a command : ");
             cp.processCommand(scanner.nextLine());
             switch (cp.getCommand()) {
                 case ("greet"):
-                    action.greet();
+                    displayResult(action.greet());
                     break;
                 case ("greeted"):
-                    action.count();
+                   displayResult(action.count());
                     break;
                 case ("clear"):
-                    action.clear();
+                    displayResult(action.clear());
                     break;
                 case ("help"):
-                    action.getHelp();
+                    displayResult(action.getHelp());
                     break;
                 case ("exit"):
                     System.out.println(" Thanks for using the app.Goodbye!");
@@ -44,9 +43,10 @@ public class Main {
                 default:
                     System.out.println("Error! Invalid net.greet.command, please try again or type help for a valid  net.greet.command list.");
             }
-
         }
-
+    }
+    public static void displayResult(String result){
+        System.out.println(result);
     }
 
 }
