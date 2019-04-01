@@ -1,4 +1,4 @@
-package command;
+package net.greet.command;
 
 public class CommandProcessor {
 
@@ -12,7 +12,7 @@ public class CommandProcessor {
         if (validateCommand(this.inputArray[0])) {
             return inputArray[0];
         }
-        return "Invalid command";
+        return "Invalid net.greet.command";
     }
 
     private boolean validateCommand(String commandIn) {
@@ -26,7 +26,8 @@ public class CommandProcessor {
 
     public String getName() {
         if (this.inputArray.length >= 2) {
-            return this.inputArray[1];
+            String name = inputArray[1];
+            return name;
         }
         return null;
     }

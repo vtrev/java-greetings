@@ -1,4 +1,4 @@
-package counter;
+package net.greet.counter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
@@ -15,18 +15,17 @@ class DatabaseCounterTest {
     private Connection dbConnection = DriverManager.getConnection("jdbc:h2:file:./database/greetings", "sa", "");
 
     @BeforeEach
-    void clearDatabase() {
+    void clearDatabase() throws SQLException {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         try {
             databaseCounter.clearAllUserCounts();
-            System.out.println("Cleaning up database before test...");
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
     @Test
-    void shouldCountUserIntoTheDatabase() {
+    void shouldCountUserIntoTheDatabase() throws SQLException {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         try {
             databaseCounter.countUser("Vusi");
@@ -39,7 +38,7 @@ class DatabaseCounterTest {
     }
 
     @Test
-    void shouldGetCountForAllUsers() {
+    void shouldGetCountForAllUsers() throws SQLException{
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         try {
             databaseCounter.countUser("Yegan");
@@ -53,7 +52,7 @@ class DatabaseCounterTest {
 
 
     @Test
-    void sholdClearAllUsersFromDatabaseAndReturnTrue() {
+    void sholdClearAllUsersFromDatabaseAndReturnTrue() throws SQLException {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         try {
             databaseCounter.countUser("Bekz");
@@ -71,7 +70,7 @@ class DatabaseCounterTest {
     }
 
     @Test
-    void shouldClearUserForSpecificUser() {
+    void shouldClearUserForSpecificUser() throws SQLException {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         try {
             databaseCounter.countUser("Bekz");

@@ -1,4 +1,4 @@
-package counter;
+package net.greet.counter;
 
 import java.util.Map;
 import java.util.HashMap;

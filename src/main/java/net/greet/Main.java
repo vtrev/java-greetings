@@ -1,6 +1,8 @@
-import command.CommandProcessor;
-import counter.DatabaseCounter;
-import counter.MemoryCounter;
+package net.greet;
+
+import net.greet.command.CommandProcessor;
+import net.greet.counter.DatabaseCounter;
+import net.greet.counter.MemoryCounter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +22,7 @@ public class Main {
 
         menu:
         while (true) {
-            System.out.println("Enter a command : ");
+            System.out.println("Enter a net.greet.command : ");
             cp.processCommand(scanner.nextLine());
             switch (cp.getCommand()) {
                 case ("greet"):
@@ -53,7 +55,7 @@ public class Main {
                     dbConnection.close();
                     break menu;
                 default:
-                    System.out.println("Error! Invalid command, please try again or type help for a valid  command list.");
+                    System.out.println("Error! Invalid net.greet.command, please try again or type help for a valid  net.greet.command list.");
             }
 
         }

@@ -1,5 +1,7 @@
+package net.greet;
+
 public class Greeter{
-     String greet(String userName, String languageString){
+    public String greet(String userName, String languageString){
          Language language = getLang(languageString);
          switch (language){
              case ENGLISH:

@@ -1,5 +1,7 @@
-import command.CommandProcessor;
-import counter.*;
+package net.greet;
+
+import net.greet.command.CommandProcessor;
+import net.greet.counter.*;
 import java.sql.SQLException;
 
 public class Action {
@@ -8,7 +10,7 @@ public class Action {
     private CommandProcessor commandProcessor;
     private Greeter greeter;
 
-    public Action(CommandProcessor commandProcessor,Counter counter,Greeter greeter){
+    public Action(CommandProcessor commandProcessor, Counter counter, Greeter greeter){
         this.commandProcessor = commandProcessor;
         this.counter = counter;
         this.greeter = greeter;
@@ -16,7 +18,7 @@ public class Action {
 
     public String greet()throws SQLException{
         if (commandProcessor.getName() == null) {
-            return "Please add your name after the greet command.";
+            return "Please add your name after the greet net.greet.command.";
         }
         return greeter.greet(commandProcessor.getName(),commandProcessor.getLangauge());
     }
