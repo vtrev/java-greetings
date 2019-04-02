@@ -21,7 +21,7 @@ public class Action {
         if (commandProcessor.getName() == null) {
             return "Please add your name after the greet command.";
         }
-
+        counter.countUser(commandProcessor.getName());
         return greeter.greet(commandProcessor.getName(),commandProcessor.getLangauge());
     }
 
@@ -35,10 +35,10 @@ public class Action {
     public String clear() throws SQLException{
         if (commandProcessor.getName() != null) {
             if(counter.clearUserCount(commandProcessor.getName())){
-                return "User: "+ commandProcessor.getName()+" cleared successful";
+                return "User: "+ commandProcessor.getName()+" cleared successfully";
             }
         }else if (counter.clearAllUserCounts()){
-                return "All users cleared successful";
+                return "All users cleared successfully";
         }
            return "Error while clearing";
     }
