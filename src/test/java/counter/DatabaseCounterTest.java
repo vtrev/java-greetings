@@ -1,4 +1,5 @@
 package net.greet.counter;
+import greet.counter.DatabaseCounter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;

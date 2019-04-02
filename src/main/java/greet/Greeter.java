@@ -1,4 +1,4 @@
-package net.greet;
+package greet;
 
 public class Greeter{
     public String greet(String userName, String languageString){

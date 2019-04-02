@@ -1,8 +1,8 @@
-package net.greet;
+package greet;
 
-import net.greet.command.CommandProcessor;
-import net.greet.counter.DatabaseCounter;
-import net.greet.counter.MemoryCounter;
+import greet.command.CommandProcessor;
+import greet.counter.MemoryCounter;
+import greet.counter.DatabaseCounter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class Main {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         CommandProcessor cp = new CommandProcessor();
         Action action = new Action(cp, databaseCounter, greeter);
-        System.out.println("Hello World! Welcome to the greeting app! :)");
+        System.out.println("Hello World! Welcome to the greet app! :)");
         menu:
         while (true) {
             System.out.println("Enter a command : ");

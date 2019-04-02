@@ -1,4 +1,4 @@
-package net.greet.counter;
+package greet.counter;
 
 import java.sql.SQLException;
 

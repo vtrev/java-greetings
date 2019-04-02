@@ -1,4 +1,4 @@
-package java.net.greet;
+package greet;
 
 import org.junit.jupiter.api.Test;
 

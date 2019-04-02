@@ -17,7 +17,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>net.greet.Main</mainClass>
+                            <mainClass>greet.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

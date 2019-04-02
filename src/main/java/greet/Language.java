@@ -1,4 +1,4 @@
-package net.greet;
+package greet;
 
 public enum Language {
     ENGLISH,

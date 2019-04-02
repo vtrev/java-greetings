@@ -1,7 +1,7 @@
-package net.greet;
+package greet;
 
-import net.greet.command.CommandProcessor;
-import net.greet.counter.Counter;
+import greet.command.CommandProcessor;
+import greet.counter.Counter;
 
 import java.sql.SQLException;
 
@@ -45,7 +45,7 @@ public class Action {
 
     public String getHelp(){
         String helpText = "Greetings Console App Help Page \n General Commands : [greet,greeted,clear,help,exit]. \n Synopses \n" +
-                "1. greet [username] [option] - Returns a greeting on the screen. \n " +
+                "1. greet [username] [option] - Returns a greet on the screen. \n " +
                 "\t Username(required) : The name of user to greet. \n " +
                 "\t Option : A language in which the user will be greeted in .\n" +
                 "2. greeted [option] - Returns the number of times a user has been greeted. \n " +

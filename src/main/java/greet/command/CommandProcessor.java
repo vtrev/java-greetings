@@ -1,4 +1,4 @@
-package net.greet.command;
+package greet.command;
 
 public class CommandProcessor {
 
