@@ -34,10 +34,12 @@ public class CommandProcessor {
             case ("help"):
                 return new Result(getHelp(),true) ;
             case ("exit"):
-                return new Result(" Thanks for using the app, goodbye!",false) ;
+                return new Result("Thanks for using the app,goodbye",false);
+
             default:
-                return  new Result("Error! Invalid command, please try again or type help for a valid  net.greet.command list.",true);
+                return  new Result("Error! Invalid net.greet.command, please try again or type help for a valid  net.greet.command list.",true);
         }
+
     }
 
     public String getHelp(){
