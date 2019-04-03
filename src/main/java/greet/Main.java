@@ -1,8 +1,7 @@
 package greet;
 
-import greet.command.CommandProcessor;
-import greet.counter.MemoryCounter;
 import greet.counter.DatabaseCounter;
+import greet.counter.MemoryCounter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,37 +15,17 @@ public class Main {
         MemoryCounter memoryCounter = new MemoryCounter();
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:file:./database/greetings", "sa", "");
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
-        CommandProcessor cp = new CommandProcessor();
-        Action action = new Action(cp, databaseCounter, greeter);
+        CommandProcessor commandProcessor = new CommandProcessor(databaseCounter, greeter);
         System.out.println("Hello World! Welcome to the greet app! :)");
-        menu:
+
         while (true) {
             System.out.println("Enter a command : ");
-            cp.processCommand(scanner.nextLine());
-            switch (cp.getCommand()) {
-                case ("greet"):
-                    displayResult(action.greet());
-                    break;
-                case ("greeted"):
-                   displayResult(action.count());
-                    break;
-                case ("clear"):
-                    displayResult(action.clear());
-                    break;
-                case ("help"):
-                    displayResult(action.getHelp());
-                    break;
-                case ("exit"):
-                    System.out.println(" Thanks for using the app.Goodbye!");
-                    dbConnection.close();
-                    break menu;
-                default:
-                    System.out.println("Error! Invalid net.greet.command, please try again or type help for a valid  net.greet.command list.");
+            Result result = commandProcessor.process(scanner.nextLine());
+            System.out.println(result.getResult());
+            if(!result.getMenuState()){
+                dbConnection.close();
+                break;
             }
         }
     }
-    public static void displayResult(String result){
-        System.out.println(result);
-    }
-
 }

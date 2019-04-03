@@ -1,10 +1,9 @@
 package greet.command;
 
-public class CommandProcessor {
+public class Command {
 
     private String[] inputArray;
-
-    public void processCommand(String commandString) {
+    public Command(String commandString){
         this.inputArray = commandString.split(" ");
     }
 
