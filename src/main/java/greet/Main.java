@@ -21,13 +21,11 @@ public class Main {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
 
         Map<String, ProcessCommand> commandMap = new HashMap<>();
-
         commandMap.put("greet",new GreetProcessor(databaseCounter, greeter));
         commandMap.put("greeted",new CountProcessor(databaseCounter, greeter));
         commandMap.put("clear",new ClearProcessor(databaseCounter, greeter));
         commandMap.put("help",new HelpProcessor());
         commandMap.put("exit",new ExitProcessor());
-
         CommandProcessor commandProcessor = new CommandProcessor(commandMap);
 
         System.out.println("Hello World! Welcome to the greet app! :)");
