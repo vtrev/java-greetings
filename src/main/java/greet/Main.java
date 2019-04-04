@@ -1,11 +1,15 @@
 package greet;
 
+import greet.command.Process.*;
+import greet.command.ProcessCommand;
 import greet.counter.DatabaseCounter;
 import greet.counter.MemoryCounter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +19,17 @@ public class Main {
         MemoryCounter memoryCounter = new MemoryCounter();
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:file:./database/greetings", "sa", "");
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
-        CommandProcessor commandProcessor = new CommandProcessor(databaseCounter, greeter);
+
+        Map<String, ProcessCommand> commandMap = new HashMap<>();
+
+        commandMap.put("greet",new GreetProcessor(databaseCounter, greeter));
+        commandMap.put("greeted",new CountProcessor(databaseCounter, greeter));
+        commandMap.put("clear",new ClearProcessor(databaseCounter, greeter));
+        commandMap.put("help",new HelpProcessor());
+        commandMap.put("exit",new ExitProcessor());
+
+        CommandProcessor commandProcessor = new CommandProcessor(commandMap);
+
         System.out.println("Hello World! Welcome to the greet app! :)");
 
         while (true) {
