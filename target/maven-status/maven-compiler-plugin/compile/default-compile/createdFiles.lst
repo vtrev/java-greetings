@@ -1,10 +1,8 @@
-greet/Language.class
 greet/counter/MemoryCounter.class
-greet/command/CommandProcessor.class
 greet/command/Commands.class
+greet/counter/DatabaseCounter.class
+greet/Main.class
+greet/Language.class
 greet/Greeter.class
 greet/counter/Counter.class
 greet/Greeter$1.class
-greet/counter/DatabaseCounter.class
-greet/Main.class
-greet/Action.class

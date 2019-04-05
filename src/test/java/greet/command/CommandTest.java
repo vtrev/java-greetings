@@ -2,7 +2,7 @@ package greet.command;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CommandTest {
     //given a user input string in these command objects, they should be able to do what the test methods say
@@ -15,7 +15,7 @@ class CommandTest {
         Command command3 = new Command("help");
         Command command4 = new Command("exit");
 
-        assertEquals(command.getCommand(),"greet");
+        assertEquals(command.getCommand(), "greet");
         assertEquals(command1.getCommand(),"greeted");
         assertEquals(command2.getCommand(),"clear");
         assertEquals(command3.getCommand(),"help");
@@ -40,7 +40,15 @@ class CommandTest {
     }
 
     @Test
-    void sholdGetTheLanguage(){
+    void shouldAlwaysReturnNameInCamelCase(){
+        Command command = new Command("greet vusi English");
+        Command command2 = new Command("greet bheki");
+        assertEquals(command.getName(),"Vusi");
+        assertEquals(command2.getName(),"Bheki");
+    }
+
+    @Test
+    void shouldGetTheLanguage(){
         Command command = new Command("greet Vusi English");
         Command command2 = new Command("greet Bhekmuzi Tsonga");
         assertEquals(command.getLanguage(),"English");
