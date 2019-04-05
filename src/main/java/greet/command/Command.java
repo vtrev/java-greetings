@@ -31,7 +31,7 @@ public class Command {
         return null;
     }
 
-    public String getLangauge() {
+    public String getLanguage() {
         if (this.inputArray.length == 3) {
             return this.inputArray[2];
         }

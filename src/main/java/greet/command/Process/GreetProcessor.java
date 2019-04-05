@@ -22,7 +22,7 @@ public class GreetProcessor implements ProcessCommand {
         }
         try {
             counter.countUser(command.getName());
-            return greeter.greet(command.getName(), command.getLangauge());
+            return greeter.greet(command.getName(), command.getLanguage());
         }catch (SQLException e){
             e.printStackTrace();
             return  "Database error";
