@@ -1,1 +1,4 @@
+greet/GreeterTest.class
+greet/counter/DatabaseCounterTest.class
 net/greet/counter/MemoryCounterTest.class
+greet/command/CommandTest.class

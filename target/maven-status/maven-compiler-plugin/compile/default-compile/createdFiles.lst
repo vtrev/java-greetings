@@ -1,8 +1,17 @@
+greet/command/Process/CountProcessor.class
 greet/counter/MemoryCounter.class
+greet/command/Process/ClearProcessor.class
 greet/command/Commands.class
 greet/counter/DatabaseCounter.class
 greet/Main.class
+greet/command/Command.class
 greet/Language.class
+greet/command/Process/ExitProcessor.class
+greet/Result.class
+greet/command/Process/HelpProcessor.class
+greet/CommandProcessor.class
 greet/Greeter.class
 greet/counter/Counter.class
 greet/Greeter$1.class
+greet/command/ProcessCommand.class
+greet/command/Process/GreetProcessor.class

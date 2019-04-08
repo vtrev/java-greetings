@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DatabaseCounterTest {
     DatabaseCounterTest() throws SQLException {
-
     }
 
     private Connection dbConnection = DriverManager.getConnection("jdbc:h2:file:./database/greetings", "sa", "");
@@ -52,7 +51,7 @@ class DatabaseCounterTest {
 
 
     @Test
-    void sholdClearAllUsersFromDatabaseAndReturnTrue() throws SQLException {
+    void shouldClearAllUsersFromDatabaseAndReturnTrue() throws SQLException {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
         try {
             databaseCounter.countUser("Bekz");

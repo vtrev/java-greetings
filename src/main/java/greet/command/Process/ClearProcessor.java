@@ -29,6 +29,7 @@ public class ClearProcessor implements ProcessCommand {
             if (counter.clearAllUserCounts()){
                 return "All users cleared successfully";
             }
+
             return "Error while clearing, user "+command.getName()+" does not exist";
         }catch (SQLException e){
             e.printStackTrace();

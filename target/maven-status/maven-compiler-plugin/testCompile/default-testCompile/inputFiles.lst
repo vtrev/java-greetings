@@ -1,4 +1,4 @@
-/home/vusi/projects/java/greet-in-java/src/test/java/GreeterTest.java
-/home/vusi/projects/java/greet-in-java/src/test/java/counter/MemoryCounterTest.java
-/home/vusi/projects/java/greet-in-java/src/test/java/counter/DatabaseCounterTest.java
-/home/vusi/projects/java/greet-in-java/src/test/java/ActionTest.java
+/home/vusi/projects/java/greet-in-java/src/test/java/greet/command/CommandTest.java
+/home/vusi/projects/java/greet-in-java/src/test/java/greet/counter/MemoryCounterTest.java
+/home/vusi/projects/java/greet-in-java/src/test/java/greet/GreeterTest.java
+/home/vusi/projects/java/greet-in-java/src/test/java/greet/counter/DatabaseCounterTest.java
