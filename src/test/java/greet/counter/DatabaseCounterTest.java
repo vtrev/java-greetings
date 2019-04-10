@@ -14,46 +14,34 @@ class DatabaseCounterTest {
     private Connection dbConnection = DriverManager.getConnection("jdbc:h2:file:./database/greetings", "sa", "");
 
     @BeforeEach
-    void clearDatabase() throws SQLException {
+    void clearDatabase(){
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
-        try {
-            databaseCounter.clearAllUserCounts();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        databaseCounter.clearAllUserCounts();
     }
 
     @Test
-    void shouldCountUserIntoTheDatabase() throws SQLException {
+    void shouldCountUserIntoTheDatabase(){
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
-        try {
+
             databaseCounter.countUser("Vusi");
             databaseCounter.countUser("Vusi");
             databaseCounter.countUser("Vusi");
             assertEquals(databaseCounter.userGreetCount("Vusi"), 3);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
     }
 
     @Test
-    void shouldGetCountForAllUsers() throws SQLException{
+    void shouldGetCountForAllUsers() {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
-        try {
-            databaseCounter.countUser("Yegan");
-            databaseCounter.countUser("Joe");
-            databaseCounter.countUser("Mikey");
-            assertEquals(databaseCounter.totalGreetCount(), 3);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        databaseCounter.countUser("Yegan");
+        databaseCounter.countUser("Joe");
+        databaseCounter.countUser("Mikey");
+        assertEquals(databaseCounter.totalGreetCount(), 3);
     }
 
-
     @Test
-    void shouldClearAllUsersFromDatabaseAndReturnTrue() throws SQLException {
+    void shouldClearAllUsersFromDatabaseAndReturnTrue() {
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
-        try {
+
             databaseCounter.countUser("Bekz");
             databaseCounter.countUser("Rangi");
             databaseCounter.countUser("Joey");
@@ -62,15 +50,10 @@ class DatabaseCounterTest {
             assertEquals(databaseCounter.clearAllUserCounts(), true);
             //count = 0 after clear
             assertEquals(databaseCounter.totalGreetCount(), 0);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
     }
 
     @Test
     void shouldClearUserForSpecificUser(){
-        try {
             DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
             databaseCounter.countUser("Bekz");
             databaseCounter.countUser("Rangi");
@@ -79,11 +62,6 @@ class DatabaseCounterTest {
             assertEquals(databaseCounter.clearUserCount("Bekz"),true);
             //non- existing user should be false
             assertEquals(databaseCounter.clearUserCount("Vusi"),false);
-
-        }catch (SQLException e){
-            System.out.println(e);
-        }
-
     }
 
 }

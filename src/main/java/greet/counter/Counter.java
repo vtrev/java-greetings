@@ -1,11 +1,8 @@
 package greet.counter;
-
-import java.sql.SQLException;
-
 public interface Counter {
-    boolean countUser(String userName) throws SQLException;
-    int userGreetCount(String userName) throws SQLException;
-    int totalGreetCount() throws SQLException;
-    boolean clearUserCount(String userName) throws SQLException;
-    boolean clearAllUserCounts() throws SQLException;
+    boolean countUser(String userName);
+    int userGreetCount(String userName);
+    int totalGreetCount();
+    boolean clearUserCount(String userName);
+    boolean clearAllUserCounts();
 }

@@ -4,7 +4,6 @@ import greet.Greeter;
 import greet.command.Command;
 import greet.command.ProcessCommand;
 import greet.counter.Counter;
-import java.sql.SQLException;
 
 public class GreetProcessor implements ProcessCommand {
     private Counter counter;
@@ -20,12 +19,7 @@ public class GreetProcessor implements ProcessCommand {
         if (command.getName() == null) {
             return "Please add your name after the greet command.";
         }
-        try {
-            counter.countUser(command.getName());
-            return greeter.greet(command.getName(), command.getLanguage());
-        }catch (SQLException e){
-            e.printStackTrace();
-            return  "Database error";
-        }
+        counter.countUser(command.getName());
+        return greeter.greet(command.getName(), command.getLanguage());
     }
 }

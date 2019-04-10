@@ -22,8 +22,8 @@ public class Main {
 
         Map<String, ProcessCommand> commandMap = new HashMap<>();
         commandMap.put("greet",new GreetProcessor(databaseCounter, greeter));
-        commandMap.put("greeted",new CountProcessor(databaseCounter, greeter));
-        commandMap.put("clear",new ClearProcessor(databaseCounter, greeter));
+        commandMap.put("greeted",new CountProcessor(databaseCounter));
+        commandMap.put("clear",new ClearProcessor(databaseCounter));
         commandMap.put("help",new HelpProcessor());
         commandMap.put("exit",new ExitProcessor());
         CommandProcessor commandProcessor = new CommandProcessor(commandMap);

@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 
 class CommandProcessorTest {
     @Test
-    void shouldProcessGreetCommand() {
+    void shouldProcessGreetCommand(){
             // Assembly
             DatabaseCounter databaseCounterMock = Mockito.mock(DatabaseCounter.class);
             Greeter greeterMock = Mockito.mock(Greeter.class);
@@ -24,34 +24,24 @@ class CommandProcessorTest {
             CommandProcessor commandProcessor = new CommandProcessor(commandMap);
             // Action
             Result res = commandProcessor.process("greet Vusi English");
-            // Assertion
+            // Assertions and verifications
             assertEquals(res.getResult(),"Hello Vusi!");
             // has countUser been called with the right params
-        try{
-//            verify(greeterMock,times(1)).greet("Vusi","English");
             verify(databaseCounterMock,times(1)).countUser("Vusi");
-        }catch (SQLException e){
-            e.printStackTrace();
-            System.out.println();
         }
-    }
+
 
     @Test
     void shouldProcessGreetedCommand(){
         // Assembly
         Counter counterMock = Mockito.mock(Counter.class);
-        Greeter greeterMock = Mockito.mock(Greeter.class);
             //add behavior
-        try {
             when(counterMock.userGreetCount("Vusi")).thenReturn(5);
             when(counterMock.totalGreetCount()).thenReturn(56);
-        }catch (SQLException e){
-            System.out.println("Database error");
-            e.printStackTrace();
-        }
+
 
         Map<String, ProcessCommand> commandMap = new HashMap<>();
-        commandMap.put("greeted", new CountProcessor(counterMock,greeterMock));
+        commandMap.put("greeted", new CountProcessor(counterMock));
         CommandProcessor commandProcessor = new CommandProcessor(commandMap);
         // Action
         Result res = commandProcessor.process("greeted Vusi");
@@ -60,32 +50,21 @@ class CommandProcessorTest {
         assertEquals(res.getResult(),"User Vusi has been greeted 5 times.");
         assertEquals(res1.getResult(),"Total number of users greeted : 56");
         // has countUser been called with the right params
-        try{
             verify(counterMock,times(1)).userGreetCount("Vusi");
             verify(counterMock,times(1)).totalGreetCount();
-        }catch (SQLException e){
-            e.printStackTrace();
-            System.out.println();
-        }
     }
 
     @Test
     void shouldProcessClearCommand(){
         //assembly
-        Greeter greeterMock = Mockito.mock(Greeter.class);
         Counter counterMock = Mockito.mock(Counter.class);
         //add behavior
-        try {
             when(counterMock.clearAllUserCounts()).thenReturn(true);
             when(counterMock.clearUserCount("Vusi")).thenReturn(true);
             when(counterMock.countUser("UnknownUser")).thenReturn(false);
-        }catch (SQLException e){
-            System.out.println("Database error");
-            e.printStackTrace();
-        }
 
         Map<String, ProcessCommand> commandMap = new HashMap<>();
-        commandMap.put("clear", new ClearProcessor(counterMock,greeterMock));
+        commandMap.put("clear", new ClearProcessor(counterMock));
         CommandProcessor commandProcessor = new CommandProcessor(commandMap);
         //action
         Result res = commandProcessor.process("clear");
