@@ -8,7 +8,7 @@ A console app that takes in a command from user and returns output based on the 
 General Commands : [greet,greeted,clear,help,exit]
 
 ## Synopsis
-- List greet [username] [option] - Returns a greet on the screen.
+- greet [username] [option] - Returns a greet on the screen.
     > Username(required) : The name of user to greet.
     > Option : A language in which the user will be greeted in
 
