@@ -1,5 +1,4 @@
 package greet;
-
 import greet.command.Process.*;
 import greet.command.ProcessCommand;
 import greet.counter.Counter;
@@ -29,7 +28,7 @@ class CommandProcessorTest {
             assertEquals(res.getResult(),"Hello Vusi!");
             // has countUser been called with the right params
         try{
-            verify(greeterMock,times(1)).greet("Vusi","English");
+//            verify(greeterMock,times(1)).greet("Vusi","English");
             verify(databaseCounterMock,times(1)).countUser("Vusi");
         }catch (SQLException e){
             e.printStackTrace();
@@ -79,6 +78,7 @@ class CommandProcessorTest {
         try {
             when(counterMock.clearAllUserCounts()).thenReturn(true);
             when(counterMock.clearUserCount("Vusi")).thenReturn(true);
+            when(counterMock.countUser("UnknownUser")).thenReturn(false);
         }catch (SQLException e){
             System.out.println("Database error");
             e.printStackTrace();
@@ -90,9 +90,11 @@ class CommandProcessorTest {
         //action
         Result res = commandProcessor.process("clear");
         Result res1 = commandProcessor.process("clear Vusi");
+        Result res2 = commandProcessor.process("clear UnknownUser");
         //assertions
         assertEquals(res.getResult(),"All users cleared successfully");
         assertEquals(res1.getResult(),"User: Vusi cleared successfully");
+        assertEquals(res2.getResult(),"Error while clearing, user UnknownUser does not exist");
 
     }
 

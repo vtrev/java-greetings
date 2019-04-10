@@ -69,12 +69,17 @@ class DatabaseCounterTest {
     }
 
     @Test
-    void shouldClearUserForSpecificUser() throws SQLException {
-        DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
+    void shouldClearUserForSpecificUser(){
         try {
+            DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
             databaseCounter.countUser("Bekz");
             databaseCounter.countUser("Rangi");
             databaseCounter.countUser("Joey");
+
+            assertEquals(databaseCounter.clearUserCount("Bekz"),true);
+            //non- existing user should be false
+            assertEquals(databaseCounter.clearUserCount("Vusi"),false);
+
         }catch (SQLException e){
             System.out.println(e);
         }
