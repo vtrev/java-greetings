@@ -9,7 +9,7 @@ General Commands : [greet,greeted,clear,help,exit]
 
 ## Synopsis
 - greet [username] [option] - Returns a greet on the screen.
-    > Username(required) : The name of user to greet.&nbsp;
+    > Username(required) : The name of user to greet.\
     > Option : A language in which the user will be greeted in
 
 - greeted [option] - Returns the number of times a user has been greeted.
