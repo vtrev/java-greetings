@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class  Main {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         Greeter greeter = new Greeter();
