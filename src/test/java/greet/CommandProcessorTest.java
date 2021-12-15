@@ -1,4 +1,5 @@
 package greet;
+import greet.command.Command;
 import greet.command.Process.*;
 import greet.command.ProcessCommand;
 import greet.counter.Counter;
@@ -18,7 +19,9 @@ class CommandProcessorTest {
             DatabaseCounter databaseCounterMock = Mockito.mock(DatabaseCounter.class);
             Greeter greeterMock = Mockito.mock(Greeter.class);
                 // add behavior
-            when(greeterMock.greet("Vusi", "English")).thenReturn("Hello Vusi!");
+
+        Command command = new Command("greet Vusi English");
+            when(greeterMock.greet(command)).thenReturn("Hello Vusi!");
             Map<String, ProcessCommand> commandMap = new HashMap<>();
             commandMap.put("greet", new GreetProcessor(databaseCounterMock, greeterMock));
             CommandProcessor commandProcessor = new CommandProcessor(commandMap);
