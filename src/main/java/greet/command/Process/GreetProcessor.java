@@ -16,10 +16,7 @@ public class GreetProcessor implements ProcessCommand {
 
     @Override
     public String process(Command command) {
-        if (command.getName() == null) {
-            return "Please add your name after the greet command.";
-        }
         counter.countUser(command.getName());
-        return greeter.greet(command.getName(), command.getLanguage());
+        return greeter.greet(command);
     }
 }
