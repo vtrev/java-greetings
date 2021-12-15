@@ -1,15 +1,20 @@
 package greet;
 
+import greet.command.Command;
+
 public class Greeter{
-    public String greet(String userName, String languageString){
-         Language language = getLang(languageString);
+
+    public String greet(Command command){
+         Language language = command.getLanguage();
          switch (language){
              case ENGLISH:
-                 return "Hello "+userName+"!";
+                 return "Hello "+command.getName()+"!";
              case TSONGA:
-                 return "Avuxeni "+userName+"!";
+                 return "Avuxeni "+command.getName()+"!";
              case AFRIKAANS:
-                 return "Hallo "+userName+"!";
+                 return "Hallo "+command.getName()+"!";
+             case UNKNOWN:
+                 return "Hi "+command.getName()+" we currently do not support greeeting in "+command.getLanguage()+"Please see help for available langages.";
              default:
                  return "Error!";
          }
