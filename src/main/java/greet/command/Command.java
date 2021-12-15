@@ -1,11 +1,29 @@
 package greet.command;
 public class Command {
 
+
     private String[] inputArray;
+    private String name;
+    private String command;
+
+
     public Command(String commandString){
         this.inputArray = commandString.split(" ");
+        setName(inputArray);
     }
 
+    private void setName(String[] inputArray) {
+
+        try {
+            String tmpName = inputArray[1].toLowerCase();
+            this.name = tmpName.replace(tmpName.charAt(0), Character.toUpperCase(tmpName.charAt(0)));
+        } catch (ArrayIndexOutOfBoundsException e) {
+            this.name = null;
+        }
+    }
+
+
+    //Refactor this shit
     public String getCommand(){
         if (validateCommand(this.inputArray[0])){
             return inputArray[0];
@@ -23,12 +41,7 @@ public class Command {
     }
 
     public String getName(){
-        if (this.inputArray.length >= 2) {
-            String name = inputArray[1].toLowerCase();
-            name = name.replace(name.charAt(0),Character.toUpperCase(name.charAt(0)));
             return name;
-        }
-        return null;
     }
 
     public String getLanguage(){
