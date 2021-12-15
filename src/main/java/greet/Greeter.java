@@ -14,7 +14,13 @@ public class Greeter{
              case AFRIKAANS:
                  return "Hallo "+command.getName()+"!";
              case UNKNOWN:
-                 return "Hi "+command.getName()+" we currently do not support greeeting in "+command.getLanguage()+"Please see help for available langages.";
+                 return "Hi "+command.getName()+" we do not support the above language right now, please see help for available languages.";
+             case EMPTY:
+                 if(command.getName().isEmpty()){
+                     return "Please enter your name after the greet command.";
+                 } else {
+                     return "Hi " + command.getName() + " please enter a language you'd like to be greeted in after your name.";
+                 }
              default:
                  return "Error!";
          }
