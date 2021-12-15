@@ -32,10 +32,11 @@ public class Command {
     }
 
     public String getLanguage(){
-        if (this.inputArray.length == 3) {
+        try{
             return this.inputArray[2];
+        }catch(NullPointerException e){
+            return null;
         }
-        return null;
     }
 
 }
