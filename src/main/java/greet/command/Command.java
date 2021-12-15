@@ -10,17 +10,23 @@ public class Command {
     private String[] inputArray;
     private String name;
     private String command;
-    private String language;
+    private Language language;
 
     public Command(String commandString) {
         setInputArray(commandString.split(" "));
-        setName(inputArray[1]);
+        setName();
         setLanguage();
         setCommand(inputArray[0]);
     }
 
-    private void setName(String tmpName) {
-        this.name = tmpName.replace(tmpName.charAt(0), Character.toUpperCase(tmpName.charAt(0)));
+    private void setName() {
+        try{
+            String tmpName = this.inputArray[1];
+            this.name = tmpName.replace(tmpName.charAt(0), Character.toUpperCase(tmpName.charAt(0)));
+        }catch(ArrayIndexOutOfBoundsException e){
+            this.name = "User";
+        }
+
     }
 
     void setCommand(String command) {
@@ -29,10 +35,10 @@ public class Command {
 
     public void setLanguage() {
         if (inputArray.length > 2 && validateLanguage(inputArray[2])) {
-            this.language = inputArray[2];
+            this.language = Language.valueOf(inputArray[2].toUpperCase());
         } else {
 //          Default to English
-            this.language = "English";
+            this.language = Language.UNKNOWN;
         }
     }
 
