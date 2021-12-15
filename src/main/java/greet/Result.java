@@ -1,20 +1,14 @@
 package greet;
 
+import lombok.Getter;
+
+@Getter
 public class Result {
-    private  String res;
-    private boolean menuState;
+    private String result;
+    private Boolean menuState;
 
-    public Result(String res,boolean menuState){
-        this.res = res;
+    public Result(String result,boolean menuState){
+        this.result = result;
         this.menuState = menuState;
-    }
-
-    //getters
-    public String getResult(){
-        return this.res;
-    }
-
-    public boolean getMenuState(){
-        return this.menuState;
     }
 }
