@@ -24,7 +24,7 @@ public class Command {
             String tmpName = this.inputArray[1];
             this.name = tmpName.replace(tmpName.charAt(0), Character.toUpperCase(tmpName.charAt(0)));
         }catch(ArrayIndexOutOfBoundsException e){
-            this.name = "User";
+            this.name = "";
         }
 
     }
@@ -37,8 +37,10 @@ public class Command {
         if (inputArray.length > 2 && validateLanguage(inputArray[2])) {
             this.language = Language.valueOf(inputArray[2].toUpperCase());
         } else {
-//          Default to English
             this.language = Language.UNKNOWN;
+        }
+        if(inputArray.length < 3){
+            this.language = Language.EMPTY;
         }
     }
 
