@@ -1,13 +1,12 @@
 package greet.command;
 
+import greet.Language;
 import lombok.*;
 
 
 @Getter
 @Setter
 public class Command {
-
-
     private String[] inputArray;
     private String name;
     private String command;
@@ -15,11 +14,11 @@ public class Command {
 
 
     public Command(String commandString){
-        this.inputArray = commandString.split(" ");
+        setInputArray(commandString.split(" "));
         setName();
+        setLanguage();
         setCommand(inputArray[0]);
     }
-
 
     private void setName() {
         try {
@@ -29,8 +28,18 @@ public class Command {
                 this.name = null;
         }
     }
+
     void setCommand(String command){
         this.command = validateCommand(command) ? command : "Invalid command";
+    }
+
+    public void setLanguage(){
+        if(inputArray.length > 2 && validateLanguage(inputArray[2])){
+            this.language = inputArray[2];
+        }else {
+//          Default to English
+            this.language = "English";
+        }
     }
 
     private boolean validateCommand(String commandIn){
@@ -42,14 +51,16 @@ public class Command {
         return false;
     }
 
-    public void setLanguage(){
-        try{
-            this.language = inputArray[2];
-        }catch(ArrayIndexOutOfBoundsException e){
-            //default to English if on language is provided
-            this.language = "English";
+    private boolean validateLanguage(String languageIn){
+        for (Language language : Language.values()) {
+            if (language.name().equals(languageIn.toUpperCase())) {
+                return true;
+            }
         }
+        return false;
     }
+
+
 
 }
 
