@@ -4,5 +4,6 @@ public enum Language {
     ENGLISH,
     TSONGA,
     AFRIKAANS,
-    UNKNOWN
+    UNKNOWN,
+    EMPTY
 }
