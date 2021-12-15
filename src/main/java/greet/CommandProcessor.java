@@ -21,7 +21,7 @@ public class CommandProcessor {
             }
             return new Result(currentProcess.process(command), false);
         }
-        return new Result("Error! Invalid command, please try again or type help for a valid command list.", true);
+        return new Result("Invalid input, type help for a list of possible commands.", true);
     }
 
 }
