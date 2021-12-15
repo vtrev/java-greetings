@@ -15,13 +15,12 @@ import java.util.Scanner;
 public class  Main {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
-        Greeter greeter = new Greeter();
         MemoryCounter memoryCounter = new MemoryCounter();
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:file:./database/greetings", "sa", "");
         DatabaseCounter databaseCounter = new DatabaseCounter(dbConnection);
 
         Map<String, ProcessCommand> commandMap = new HashMap<>();
-        commandMap.put("greet",new GreetProcessor(databaseCounter, greeter));
+        commandMap.put("greet",new GreetProcessor(databaseCounter));
         commandMap.put("greeted",new CountProcessor(databaseCounter));
         commandMap.put("clear",new ClearProcessor(databaseCounter));
         commandMap.put("help",new HelpProcessor());

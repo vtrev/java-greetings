@@ -23,7 +23,7 @@ class CommandProcessorTest {
         Command command = new Command("greet Vusi English");
             when(greeterMock.greet(command)).thenReturn("Hello Vusi!");
             Map<String, ProcessCommand> commandMap = new HashMap<>();
-            commandMap.put("greet", new GreetProcessor(databaseCounterMock, greeterMock));
+            commandMap.put("greet", new GreetProcessor(databaseCounterMock));
             CommandProcessor commandProcessor = new CommandProcessor(commandMap);
             // Action
             Result res = commandProcessor.process("greet Vusi English");

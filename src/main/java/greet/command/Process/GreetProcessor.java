@@ -9,9 +9,9 @@ public class GreetProcessor implements ProcessCommand {
     private Counter counter;
     private Greeter greeter;
 
-    public GreetProcessor(Counter counter, Greeter greeter) {
+    public GreetProcessor(Counter counter) {
         this.counter = counter;
-        this.greeter = greeter;
+        this.greeter = new Greeter();
     }
 
     @Override
