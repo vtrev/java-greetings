@@ -9,14 +9,17 @@ public class GreetProcessor implements ProcessCommand {
     private Counter counter;
     private Greeter greeter;
 
-    public GreetProcessor(Counter counter, Greeter greeter){
+    public GreetProcessor(Counter counter, Greeter greeter) {
         this.counter = counter;
         this.greeter = greeter;
     }
 
     @Override
     public String process(Command command) {
-        counter.countUser(command.getName());
-        return greeter.greet(command);
+        if (!command.getName().isEmpty()) {
+            counter.countUser(command.getName());
+            return greeter.greet(command);
+        }
+        return "Please provide your name after the greet command or see help for other options";
     }
 }
