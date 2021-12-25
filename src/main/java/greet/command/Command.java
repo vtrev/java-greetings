@@ -21,13 +21,8 @@ public class Command {
     }
 
     private void setName() {
-        try{
-            String tmpName = this.inputArray[1];
-            this.name = tmpName.replace(tmpName.charAt(0), Character.toUpperCase(tmpName.charAt(0)));
-        }catch(ArrayIndexOutOfBoundsException e){
-            this.name = "";
-        }
-
+        String tmpName = inputArray.length > 1 ? this.inputArray[1] : "user";
+        this.name = tmpName.replace(tmpName.charAt(0), Character.toUpperCase(tmpName.charAt(0)));
     }
 
     void setCommand(String command) {
