@@ -3,9 +3,10 @@ package greet.command;
 import greet.Language;
 import lombok.*;
 
+import java.util.Arrays;
+
 @Getter
 @Setter
-
 public class Command {
     private String[] inputArray;
     private String name;
@@ -45,24 +46,12 @@ public class Command {
     }
 
     private boolean validateCommand(String commandIn) {
-        for (Commands command : Commands.values()) {
-            if (command.name().equals(commandIn.toUpperCase())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(Commands.values()).anyMatch((command)-> command.name().equals(commandIn.toUpperCase()));
     }
 
     private boolean validateLanguage(String languageIn) {
-        for (Language language : Language.values()) {
-            if (language.name().equals(languageIn.toUpperCase())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(Language.values()).anyMatch((language)-> language.name().equals(languageIn.toUpperCase()));}
     }
 
-
-}
 
 
