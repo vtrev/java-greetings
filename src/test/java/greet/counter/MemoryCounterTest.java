@@ -9,12 +9,12 @@ class MemoryCounterTest {
     void shouldReturnCorrectTotalCount() {
         MemoryCounter counter = new MemoryCounter();
         //count before adding user
-        assertEquals(counter.totalGreetCount(),0);
+        assertEquals(counter.getTotalGreetCount(),0);
         counter.countUser("Vusi");
         counter.countUser("Jimmy");
         counter.countUser("Baloyi");
         //count after user is added
-        assertEquals(counter.totalGreetCount(),3);
+        assertEquals(counter.getTotalGreetCount(),3);
     }
 
     @Test
@@ -28,8 +28,8 @@ class MemoryCounterTest {
             }
             i--;
         }
-        assertEquals(counter.userGreetCount("Rangi"),2);
-        assertEquals(counter.userGreetCount("Vusi"),5);
+        assertEquals(counter.getUserGreetCount("Rangi"),2);
+        assertEquals(counter.getUserGreetCount("Vusi"),5);
     }
 
     @Test
@@ -38,7 +38,7 @@ class MemoryCounterTest {
         counter.countUser("Vusi");
         counter.countUser("Urangani");
         counter.clearAllUserCounts();
-        assertEquals(counter.totalGreetCount(),0);
+        assertEquals(counter.getTotalGreetCount(),0);
     }
 
     @Test
@@ -46,6 +46,6 @@ class MemoryCounterTest {
         MemoryCounter counter = new MemoryCounter();
         counter.countUser("Vusi");
         counter.clearUserCount("Vusi");
-        assertEquals(counter.userGreetCount("Vusi"),0);
+        assertEquals(counter.getUserGreetCount("Vusi"),0);
     }
 }

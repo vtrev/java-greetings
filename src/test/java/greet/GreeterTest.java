@@ -29,9 +29,9 @@ class GreeterTest {
     }
 
     @Test
-    void shouldGreetUserInEnglishAsDefaultLanguage(){
+    void shouldReturnErrorMessageWithNoLanguage(){
         Greeter greeter = new Greeter();
         Command command = new Command("greet Vusi");
-        assertEquals(greeter.greet(command),"Hello Vusi!");
+        assertEquals(greeter.greet(command),"Error!");
     }
 }
