@@ -1,7 +1,10 @@
 package greet.command.Process;
 
+import greet.Languages;
 import greet.command.Command;
 import greet.command.ProcessCommand;
+
+import java.util.Arrays;
 
 public class HelpProcessor implements ProcessCommand {
 
@@ -11,7 +14,8 @@ public class HelpProcessor implements ProcessCommand {
                 "1. greet [username] [option] - Returns a greet on the screen. \n " +
                 "\t Username(required) : The name of user to greet. \n " +
                 "\t Option : A language in which the user will be greeted in .\n" +
-                "2. greeted [option] - Returns the number of times a user has been greeted. \n " +
+                "\t\t Available languages " + Arrays.toString(Languages.values()).replace("EMPTY, ","").replace("UNKNOWN, ","")+
+                "\n 2. greeted [option] - Returns the number of times a user has been greeted. \n " +
                 "\t Option : The name of the user to get count for. \n"  +
                 "3. clear [option] - Removes the count from database. \n" +
                 " \t Option : The name of the user to clear,clears every user if no option is given .\n"  +
