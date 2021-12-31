@@ -3,6 +3,15 @@ package greet.counter;
 import java.sql.*;
 
 public class DatabaseCounter implements Counter {
+
+//Prepared statements
+    private PreparedStatement getUserCountStmt;
+    private PreparedStatement removeUserStmt;
+    private PreparedStatement removeAllUsersStmt;
+    private PreparedStatement getUserStmt;
+    private PreparedStatement addUserStmt;
+    private PreparedStatement updateCountStmt;
+
     //SQL
     private final String GET_USER_SQL = "SELECT 1 FROM USERS WHERE NAME = ?";
     private final String ADD_USER_SQL = "INSERT INTO USERS (NAME,GREET_COUNT) VALUES (?,?)";
@@ -12,13 +21,6 @@ public class DatabaseCounter implements Counter {
     private final String REMOVE_USER_SQL = "DELETE FROM USERS WHERE NAME = ?";
     private  final String SELECT_COUNT_SQL = "SELECT COUNT(*) FROM USERS";
     private Connection conn;
-//Prepared statements
-    private PreparedStatement getUserCountStmt;
-    private PreparedStatement removeUserStmt;
-    private PreparedStatement removeAllUsersStmt;
-    private PreparedStatement getUserStmt;
-    private PreparedStatement addUserStmt;
-    private PreparedStatement updateCountStmt;
 //Constructor
     public DatabaseCounter(Connection connIn){
         try{
@@ -50,7 +52,7 @@ public class DatabaseCounter implements Counter {
         return false;
     }
 
-    public int userGreetCount(String userName){
+    public int getUserGreetCount(String userName){
         try {
             getUserCountStmt.setString(1, userName);
             ResultSet resultSet = getUserCountStmt.executeQuery();
@@ -64,7 +66,7 @@ public class DatabaseCounter implements Counter {
         return 0;
     }
 
-    public int totalGreetCount(){
+    public int getTotalGreetCount(){
         try (Statement statement = conn.createStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_COUNT_SQL)) {
              resultSet.next();
@@ -106,13 +108,13 @@ public class DatabaseCounter implements Counter {
         try{
         getUserStmt.setString(1, userName);
         ResultSet resultSet = getUserStmt.executeQuery();
-        if (resultSet.next()) {
-            return true;
-        }
+            if (resultSet.next()) {
+                return true;
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+            return false;
     }
 
     private boolean addUser(String userName) throws SQLException {
@@ -126,7 +128,7 @@ public class DatabaseCounter implements Counter {
 
     private boolean updateCount(String userName) throws SQLException {
 
-        int currentGreetCount = userGreetCount(userName);
+        int currentGreetCount = getUserGreetCount(userName);
         updateCountStmt.setInt(1, ++currentGreetCount);
         updateCountStmt.setString(2, userName);
 
