@@ -14,9 +14,9 @@ public class CountProcessor implements ProcessCommand {
 
     @Override
     public String process(Command command) {
-            if (command.getName() != null) {
-                return "User " + command.getName() + " has been greeted " + counter.userGreetCount(command.getName()) + " times.";
+            if (!command.getName().isEmpty()) {
+                return "User " + command.getName() + " has been greeted " + counter.getUserGreetCount(command.getName()) + " times.";
             }
-            return "Total number of users greeted : " + counter.totalGreetCount();
+            return "Total number of users greeted : " + counter.getTotalGreetCount();
     }
 }
