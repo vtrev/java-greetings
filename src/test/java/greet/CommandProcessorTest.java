@@ -6,7 +6,7 @@ import greet.counter.Counter;
 import greet.counter.DatabaseCounter;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import java.sql.SQLException;
+
 import java.util.HashMap;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,8 +39,8 @@ class CommandProcessorTest {
         // Assembly
         Counter counterMock = Mockito.mock(Counter.class);
             //add behavior
-            when(counterMock.userGreetCount("Vusi")).thenReturn(5);
-            when(counterMock.totalGreetCount()).thenReturn(56);
+            when(counterMock.getUserGreetCount("Vusi")).thenReturn(5);
+            when(counterMock.getTotalGreetCount()).thenReturn(56);
 
 
         Map<String, ProcessCommand> commandMap = new HashMap<>();
@@ -53,8 +53,8 @@ class CommandProcessorTest {
         assertEquals(res.getResult(),"User Vusi has been greeted 5 times.");
         assertEquals(res1.getResult(),"Total number of users greeted : 56");
         // has countUser been called with the right params
-            verify(counterMock,times(1)).userGreetCount("Vusi");
-            verify(counterMock,times(1)).totalGreetCount();
+            verify(counterMock,times(1)).getUserGreetCount("Vusi");
+            verify(counterMock,times(1)).getTotalGreetCount();
     }
 
     @Test
@@ -89,8 +89,9 @@ class CommandProcessorTest {
         String helpText = "Greetings Console App Help Page \n General Commands : [greet,greeted,clear,help,exit]. \n Synopses \n" +
                 "1. greet [username] [option] - Returns a greet on the screen. \n " +
                 "\t Username(required) : The name of user to greet. \n " +
-                "\t Option : A language in which the user will be greeted in .\n" +
-                "2. greeted [option] - Returns the number of times a user has been greeted. \n " +
+                "\t Option : A language in which the user will be greeted in .\n"+
+                "\t\t Available languages [ENGLISH, TSONGA, AFRIKAANS]"+
+                "\n 2. greeted [option] - Returns the number of times a user has been greeted. \n " +
                 "\t Option : The name of the user to get count for. \n"  +
                 "3. clear [option] - Removes the count from database. \n" +
                 " \t Option : The name of the user to clear,clears every user if no option is given .\n"  +

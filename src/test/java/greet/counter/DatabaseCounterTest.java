@@ -26,7 +26,7 @@ class DatabaseCounterTest {
             databaseCounter.countUser("Vusi");
             databaseCounter.countUser("Vusi");
             databaseCounter.countUser("Vusi");
-            assertEquals(databaseCounter.userGreetCount("Vusi"), 3);
+            assertEquals(databaseCounter.getUserGreetCount("Vusi"), 3);
     }
 
     @Test
@@ -35,7 +35,7 @@ class DatabaseCounterTest {
         databaseCounter.countUser("Yegan");
         databaseCounter.countUser("Joe");
         databaseCounter.countUser("Mikey");
-        assertEquals(databaseCounter.totalGreetCount(), 3);
+        assertEquals(databaseCounter.getTotalGreetCount(), 3);
     }
 
     @Test
@@ -46,10 +46,10 @@ class DatabaseCounterTest {
             databaseCounter.countUser("Rangi");
             databaseCounter.countUser("Joey");
             //count = 3 before clear
-            assertEquals(databaseCounter.totalGreetCount(), 3);
+            assertEquals(databaseCounter.getTotalGreetCount(), 3);
             assertEquals(databaseCounter.clearAllUserCounts(), true);
             //count = 0 after clear
-            assertEquals(databaseCounter.totalGreetCount(), 0);
+            assertEquals(databaseCounter.getTotalGreetCount(), 0);
     }
 
     @Test

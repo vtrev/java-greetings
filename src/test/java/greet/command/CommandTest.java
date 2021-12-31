@@ -1,6 +1,6 @@
 package greet.command;
 
-import greet.Language;
+import greet.Languages;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -52,7 +52,7 @@ class CommandTest {
     void shouldGetTheLanguage(){
         Command command = new Command("greet Vusi English");
         Command command2 = new Command("greet Bhekmuzi Tsonga");
-        assertEquals(command.getLanguage(), Language.ENGLISH);
-        assertEquals(command2.getLanguage(),Language.TSONGA);
+        assertEquals(command.getLanguages(), Languages.ENGLISH);
+        assertEquals(command2.getLanguages(), Languages.TSONGA);
     }
 }
