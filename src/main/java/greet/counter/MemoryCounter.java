@@ -11,16 +11,16 @@ public class MemoryCounter implements Counter{
         if (greetMap.containsKey(userName)) {
             return updateCount(userName);
         }
-
-        greetMap.put(userName, 1);
+        if(!userName.equals(""))
+            greetMap.put(userName, 1);
         return true;
     }
 
-    public int totalGreetCount() {
+    public int getTotalGreetCount() {
         return this.greetMap.size();
     }
 
-    public int userGreetCount(String userName) {
+    public int getUserGreetCount(String userName) {
         try {
             return greetMap.get(userName);
         } catch (NullPointerException e) {
