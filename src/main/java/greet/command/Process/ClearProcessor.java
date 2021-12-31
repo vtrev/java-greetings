@@ -13,7 +13,7 @@ public class ClearProcessor implements ProcessCommand {
 
     @Override
     public String process(Command command) {
-            if (command.getName() != null) {
+            if (!command.getName().isEmpty()) {
                 if(counter.clearUserCount(command.getName())){
                     return "User: "+ command.getName()+" cleared successfully";
                 }
