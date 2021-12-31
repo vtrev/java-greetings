@@ -1,8 +1,8 @@
 package greet.counter;
 public interface Counter {
     boolean countUser(String userName);
-    int userGreetCount(String userName);
-    int totalGreetCount();
+    int getUserGreetCount(String userName);
+    int getTotalGreetCount();
     boolean clearUserCount(String userName);
     boolean clearAllUserCounts();
 }
